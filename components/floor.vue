@@ -4,17 +4,15 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
 })
 function handleResize() {
-  var ptop = $('#tab-bar').outerHeight(true), main
+  var ptop = $('#tab-bar').outerHeight(true), _floor = $('#floor')
   if (ptop) {
     $('#main').css('padding-top', (ptop + 10) + 'px')
-    main = $('#main').outerHeight(true)!
-    var _floor = $('#floor')
-    var top = Math.max(main, window.innerHeight)
+    ptop = $('#main').outerHeight(true)!
+    var top = Math.max(ptop, window.innerHeight)
     _floor.css('top', `${top}px`)
     if (top < window.innerHeight)
       _floor.css('margin', '-34px')
   }
-  console.log({ body: $('body').outerHeight(true), main, floor: $('#floor').css('top') });
 }
 </script>
 <template>
