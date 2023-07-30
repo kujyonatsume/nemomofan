@@ -2,4 +2,3 @@
 .output
 node_modules
 dist
-yarn.lock
