@@ -1,0 +1,42 @@
+{
+  "name": "nemomofan",
+  "scripts": {
+    "dev": "yarn host nuxt dev",
+    "web": "nuxt generate",
+    "build": "nuxt build",
+    "start": "yarn host nuxt start",
+    "postinstall": "nuxt prepare",
+    "host": "cross-env HOST=localhost"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@nuxt/devtools": "latest",
+    "@popperjs/core": "^2.11.6",
+    "@types/jquery": "^3.5.16",
+    "@types/node": "^18",
+    "@vue/cli-plugin-babel": "^5.0.0",
+    "@vue/cli-plugin-router": "^5.0.0",
+    "@vue/cli-plugin-typescript": "^5.0.0",
+    "@vue/cli-service": "^5.0.0",
+    "nuxt": "^3.5.3",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
+    "core-js": "^3.8.3",
+    "jquery": "^3.7.0",
+    "nuxt": "^3.5.3",
+    "vue": "^3.2.13",
+    "vue-cookies": "^1.8.3",
+    "vue-meta": "3.0.0-alpha.10",
+    "vue-router": "^4.0.3",
+    "vue-tsc": "^1.6.5",
+    "vuex": "^4.1.0",
+    "webpack": "^5.79.0"
+  }
+}
