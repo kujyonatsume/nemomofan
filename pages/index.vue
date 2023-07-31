@@ -3,6 +3,12 @@ import img_Meta from "@/components/img_Meta.vue"
 </script>
 <template>
   <img_Meta />
-  <a href="https://www.youtube.com/@NemesisXDFP" target="_blank"><img src="/QR_code.png" title="https://www.youtube.com/@NemesisXDFP" height="200"></a>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <iframe
+        src="https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview" width="1600" height="730"
+        allow="autoplay"></iframe>
+    </div>
+  </div>
   <floor />
 </template>

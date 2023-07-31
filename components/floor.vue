@@ -4,19 +4,17 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
 })
 function handleResize() {
-  var ptop = $('#tab-bar').outerHeight(true), _floor = $('#floor')
+  var ptop = $('#tab-bar').outerHeight(true)
   if (ptop) {
     $('#main').css('padding-top', (ptop + 10) + 'px')
     ptop = $('#main').outerHeight(true)!
-    var top = Math.max(ptop, window.innerHeight)
-    _floor.css('top', `${top}px`)
-    if (top < window.innerHeight)
-      _floor.css('margin', '-34px')
+    var _floor = $('#floor').css('top', `${Math.max(ptop, window.innerHeight)}px`)
+    if (ptop < window.innerHeight) _floor.css('margin-top', '-34px')
   }
 }
 </script>
 <template>
-  <footer id="floor" class="text-center card-footer position-absolute">
+  <footer id="floor" class="text-center position-absolute">
     <strong> Copyright© 2023 九条夏目 | <a href="https://github.com/kujyonatsume/nemomofan" target="_blank"> <svg
           xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-github">
           <path
