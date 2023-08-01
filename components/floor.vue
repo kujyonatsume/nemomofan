@@ -22,16 +22,3 @@ function handleResize() {
         </svg>原始碼</a></strong>
   </footer>
 </template>
-<style lang="scss">
-#floor {
-  color: #ffbebe;
-  font-size: 16px;
-  background-color: rgb(46, 0, 0);
-  padding: 5px;
-  width: 100%;
-
-  a {
-    color: #ffbebe;
-  }
-}
-</style>

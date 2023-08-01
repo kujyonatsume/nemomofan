@@ -52,28 +52,3 @@ function handleScroll() {
     <NuxtPage />
   </main>
 </template>
-<style lang="scss">
-@import url(https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.css);
-////cwTeX 字體
-@import url(https://fonts.googleapis.com/earlyaccess/cwtexkai.css); //標楷 cwTeXKai , serif;
-@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css); // 圓體 cwTeXYen , sans-serif;
-@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css); //仿宋 cwTeXFangSong, serif;
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css); //明體 
-// 思源字體
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap); //黑體 Noto Sans TC
-@import url(https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap); //宋體 Noto Serif TC
-
-body {
-  font-family: 'Noto Serif TC', sans-serif;
-//  height: max(1080px, 100vh);
-  background-position: center;
-  background-attachment: fixed;
-  background-image: url(https://www.nemomofan.com/bg-nemo.png);
-}
-
-#main {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #fff;
-}
-</style>

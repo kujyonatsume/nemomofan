@@ -12,12 +12,3 @@ const p = defineProps({
     </div>
   </div>
 </template>
-<style lang="scss">
-#card-bg {
-  width: 400px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-image: url(https://www.nemomofan.com/bg-card.png);
-}
-</style>
