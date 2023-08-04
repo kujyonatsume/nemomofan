@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 
 export default defineEventHandler(async (event) => {
   var { imageDir } = useRuntimeConfig(event)
+  
   await formidable({
     uploadDir: imageDir,
     filename: (name, _, part) =>

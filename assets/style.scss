@@ -1,0 +1,23 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.css);
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexkai.css);
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap);
+
+/**
+標楷 cwTeXKai , serif;
+圓體 cwTeXYen , sans-serif;
+仿宋 cwTeXFangSong, serif;
+明體
+黑體 Noto Sans TC
+宋體 Noto Serif TC
+*/
+@font-face {
+  font-family: '辰宇落雁';
+  src: local('ChenYuluoyan-Thin-Monospaced'),
+    url(/fonts/ChenYuluoyan-Thin-Monospaced.woff) format("woff"),
+    url(/fonts/ChenYuluoyan-Thin-Monospaced.ttf) format("truetype")
+}
+

@@ -38,3 +38,35 @@ interface Itabbar {
     </strong>
   </header>
 </template>
+<style lang="scss">
+
+#qrcode {
+    padding-top: 10px;
+    height: 110px;
+}
+
+#tab-bar {
+    font-family: 'Noto Sans TC', serif;
+    background-color: #0004;
+}
+
+#top-title {
+    padding-top: 10px;
+    color: #fc5b5b;
+}
+
+#click {
+    color: #fff !important;
+    background-color: #ff8df0;
+}
+
+.nav-link {
+    color: #ff5177;
+    border-radius: 99em
+}
+
+.nav-link:hover {
+    color: #fff;
+    background-color: #ff8df0;
+}
+</style>

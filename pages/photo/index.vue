@@ -47,12 +47,12 @@ async function update() {
   <img_Meta />
   <div class="container">
     <div class="row row-cols-auto">
-      <form class="input-group">
+      <div class="input-group">
         <input type="file" class="form-control" @change="onInputFile">
         <button class="btn btn-outline-secondary" type="button" @click="update">上傳</button>
-      </form>
+      </div>
       <div id="broad_item" class="d-flex justify-content-center" v-for="( item ) in photos ">
-        <img :src="'https://img.nemomofan.com/' + item" />
+        <img :src="'https://img.nemomofan.com/' + item" width="200px"/>
       </div>
     </div>
   </div>

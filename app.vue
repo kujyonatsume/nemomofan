@@ -3,7 +3,6 @@ import tab_bar from '@/components/tab-bar.vue'
 
 onMounted(() => {
   console.log(import.meta.env);
-  
   window.addEventListener('scroll', handleScroll)
 })
 
@@ -18,9 +17,10 @@ function handleScroll() {
     $tab_bar.animate({ top: -title_h + 'px' });
   }
 }
+
 </script>
 <template>
-  <Title>太陽絆星觀測報告 - 涅默Nemesis 一周年紀念</Title>
+  <Title>太陽伴星觀測報告 - 涅默Nemesis 一周年紀念</Title>
   <Link href="site_icon.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="text/html; charset=UTF-8" http-equiv="content-type" />
   <Meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0"
@@ -43,7 +43,7 @@ function handleScroll() {
 
   <Meta content="https://www.nemomofan.com/" property="og:url" />
   <tab_bar title="涅默Nemesis 一周年紀念活動" :routes="[
-    { path: '/', text: '太陽絆星觀測報告' },
+    { path: '/', text: '太陽伴星觀測報告' },
     { path: '/message', text: '絆星留言版' },
     { path: '/photo', text: '追星趣' },
     { path: '/about', text: '關於我們' }
@@ -52,3 +52,24 @@ function handleScroll() {
     <NuxtPage />
   </main>
 </template>
+<style lang="scss">
+body {
+    font-family: 'Noto Serif TC', sans-serif;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url(/images/bg-nemo.png);
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+body::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+#main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+</style>

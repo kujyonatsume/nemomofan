@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         }
     ],
     css: [
-        "@/assets/style.css"
+        "@/assets/style.scss"
       ],
     runtimeConfig: {
         imageDir: CustomFile('image')
