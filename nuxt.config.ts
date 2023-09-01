@@ -1,9 +1,12 @@
 import { existsSync, mkdirSync, writeFileSync } from "fs"
 import path from "path"
-
+var root = process.cwd()
+if (process.env.NODE_ENV === "production") {
+    root = path.join(root, '.output')
+}
+//console.log(root);
 export default defineNuxtConfig({
     routeRules: {
-        '/bot': { redirect: 'https://discordapp.com/oauth2/authorize?client_id=998644371220090930&scope=bot&permissions=66186303' },
         '/discord': { redirect: 'https://discord.gg/s6TNgRZ5Bh' }
     },
     devtools: {
@@ -16,16 +19,14 @@ export default defineNuxtConfig({
     ],
     css: [
         "@/assets/style.scss"
-      ],
+    ],
     runtimeConfig: {
-        imageDir: CustomFile('image')
+        imageDir: CustomFile('photos')
     }
 })
 
 function CustomFile(file: string, format?: string) {
-    console.log(process.cwd());
-    
-    file = path.join(process.cwd(), file)
+    file = path.join(root, `public/${file}`)
     if (!existsSync(file)) {
         if (format) {
             file += format

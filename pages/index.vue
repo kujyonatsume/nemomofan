@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import img_Meta from "@/components/img_Meta.vue"
+var DEV = ref(import.meta.env.DEV)
+onMounted(ResetfloorPos)
 </script>
 <template>
-  <img_Meta />
-  <div class="container">
-    <div class="d-flex justify-content-center">
-      <iframe
-        src="https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview" width="1600" height="730"
-        allow="autoplay"></iframe>
-    </div>
+  <div class="d-flex justify-content-center">
+    <iframe v-if="DEV" src="https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview" width="1600"
+      height="900" allow="autoplay"></iframe>
   </div>
-  <floor />
 </template>

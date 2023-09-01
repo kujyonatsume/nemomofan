@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import img_Meta from "@/components/img_Meta.vue"
+const lists = useFetch("/api/list").data
+const id = ref<number>(-1)
+onMounted(() => {
+  ResetfloorPos()
+  var scrollY = window.scrollY
+  window.addEventListener("scroll", resizeHandle)
+  function resizeHandle() {
+    if (id.value > -1) scrollY = window.scrollY
+    else window.scrollY = scrollY
+  }
+})
 </script>
 <template>
   <Title>關於我們 - 涅默Nemesis一周年紀念活動</Title>
@@ -15,20 +25,55 @@ import img_Meta from "@/components/img_Meta.vue"
   <Meta content="企劃組成員" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/about" property="og:url" />
-  <img_Meta />
-  <div class="container">
-    <div class="row">
-      <div class="col d-flex justify-content-center"> Column </div>
-      <div class="col d-flex justify-content-center"> Column </div>
-    </div>
-    <div class="row">
-      <div class="col d-flex justify-content-center"> Column </div>
-      <div class="col d-flex justify-content-center"> Column </div>
-    </div>
-    <div class="row">
-      <div class="col d-flex justify-content-center"> Column </div>
-      <div class="col d-flex justify-content-center"> Column </div>
+
+  <div id="about" class="d-flex justify-content-center">
+    <div id="auto-row" class="row row-cols-auto">
+      <div id="listRow" v-for="(list, key) in lists">
+        <h2>{{ key }}</h2>
+        <div class="d-flex justify-content-center">
+          <div id="listCol" v-for="data in list">
+            <img v-if="data.icon" :src=data.icon width="200">
+            <p id="name">{{ data.name }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <floor />
 </template>
+<style lang="scss">
+#about {
+  color: #ff5177;
+  font-family: 'SetoFont';
+  top: 20%;
+  left: 25%;
+  width: 50%;
+  position: relative;
+
+  #auto-row>* {
+    padding: unset;
+  }
+
+  #listRow {
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+
+  #listCol {
+    border-radius: 20px;
+    margin: 10px;
+    padding: 5px !important;
+    background-color: rgba(255, 255, 255);
+
+    img {
+      border-radius: 20px 20px 0px 0px
+    }
+
+    #name {
+      font-size: 20px;
+      margin: unset;
+    }
+  }
+}
+</style>

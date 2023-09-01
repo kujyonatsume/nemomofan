@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import img_Meta from "@/components/img_Meta.vue"
 const messages = ref<UserMessage[]>();
 const id = ref<number>(-1)
 onMounted(() => {
+  ResetfloorPos()
   var scrollY = window.scrollY
-  window.addEventListener("scroll", resizeHandle)
-  function resizeHandle() {
+  window.addEventListener("scroll", scrollHandle)
+  function scrollHandle() {
     if (id.value > -1) scrollY = window.scrollY
     else window.scrollY = scrollY
   }
@@ -15,6 +15,17 @@ function CardClick(i: number) {
 }
 var { data } = await useFetch('/api/message')
 messages.value = data.value || []
+
+function BigCardMount() {
+  resizeHandle()
+  window.addEventListener('resize', resizeHandle)
+  function resizeHandle() {
+    var bigcard = $('#card-s2');
+    var cardbg = $('#card-all');
+    if (!bigcard) return
+    bigcard.css('top', ((cardbg.height()! - bigcard.height()!) / 2) + 'px').css('left', ((cardbg.width()! - bigcard.width()!) / 2) + 'px')
+  }
+}
 
 </script>
 <template>
@@ -30,25 +41,17 @@ messages.value = data.value || []
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/message" property="og:url" />
-  <img_Meta />
-  <div class="d-flex justify-content-center">
-    <div class="row row-cols-auto" style="width: 95%; justify-content: center !important;">
-      <div style="padding: 5px; justify-content:left !important" v-for="(data, i) in messages">
-        <div id="card-s1" @click="() => CardClick(id = i)">
-          <div id="card-bg" class="d-flex flex-column justify-content-between" v-if="id != i">
-            <p>{{ data.text }}</p>
-            <p id="username">{{ data.name }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="id > -1" id="card-all" class="fixed-top" @click="() => CardClick(id = -1)">
-      <div id="card-s2" style="position: fixed;">
-        <BigCard :data="messages![id]" />
-      </div>
+
+  <div class="row row-cols-auto justify-content-center">
+    <div id="card-s1" v-for="(data, i) in messages" @click="() => CardClick(id = i)">
+      <BigCard :data="data" :mount="false" v-if="id != i" />
     </div>
   </div>
-  <floor />
+  <div v-if="id > -1" id="card-all" class="fixed-top" @click="() => CardClick(id = -1)">
+    <div id="card-s2" style="position: fixed;">
+      <BigCard :data="messages![id]" @vnode-mounted="() => BigCardMount()" />
+    </div>
+  </div>
 </template>
 <style lang="scss">
 #card-all {
@@ -61,8 +64,15 @@ messages.value = data.value || []
 //#card
 @for $size from 1 through 2 {
   #card-s#{$size} {
-    $height: 200px;
-    width: calc(350px * $size);
+    $height: 250px;
+    $width: 350px;
+    
+    @if $size == 1 {
+      margin: 5px;
+    }
+
+    padding: unset;
+    width: calc($width * $size);
     height: $height;
 
     #card-bg {
@@ -71,9 +81,7 @@ messages.value = data.value || []
       padding: calc(10px * $size);
       font-size: calc(16px * $size);
 
-      color: brown;
-      font-style: italic;
-      font-family: '辰宇落雁';
+      color: #ff5177;
       background-color: #ffdee9;
       background-repeat: no-repeat;
       background-image: url(/images/bg-card.png);

@@ -14,6 +14,11 @@
 黑體 Noto Sans TC
 宋體 Noto Serif TC
 */
+
+.row {
+  margin: unset;
+}
+
 @font-face {
   font-family: '辰宇落雁';
   src: local('ChenYuluoyan-Thin-Monospaced'),
@@ -21,3 +26,9 @@
     url(/fonts/ChenYuluoyan-Thin-Monospaced.ttf) format("truetype")
 }
 
+@font-face {
+  font-family: 'SetoFont';
+  src: local('SetoFont'),
+  url(/fonts/SetoFont.woff) format("woff"),
+  url(/fonts/SetoFont.ttf) format("truetype")
+}
