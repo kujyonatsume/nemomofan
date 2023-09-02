@@ -3,7 +3,6 @@ var videoUrl =
   import.meta.env.DEV ? "https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview" :
   "https://www.youtube.com/embed/dglXSGJq_iE?si=1G8Ci0LXwZsrxRkI"
     
-ref()
 onMounted(() => {
   ResetfloorPos()
 })
