@@ -2,7 +2,6 @@
 const messages = ref<UserMessage[]>();
 const id = ref<number>(-1)
 onMounted(() => {
-  ResetfloorPos()
   var scrollY = window.scrollY
   window.addEventListener("scroll", scrollHandle)
   function scrollHandle() {
@@ -10,6 +9,7 @@ onMounted(() => {
     else window.scrollY = scrollY
   }
 })
+
 function CardClick(i: number) {
   $('body').css('overflow', i > -1 ? 'hidden' : '');
 }
@@ -52,6 +52,7 @@ function BigCardMount() {
       <BigCard :data="messages![id]" @vue:mounted="() => BigCardMount()" />
     </div>
   </div>
+  <floor />
 </template>
 <style lang="scss">
 #card-all {

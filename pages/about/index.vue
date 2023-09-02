@@ -2,7 +2,6 @@
 const lists = useFetch("/api/list").data
 const id = ref<number>(-1)
 onMounted(() => {
-  ResetfloorPos()
   var scrollY = window.scrollY
   window.addEventListener("scroll", resizeHandle)
   function resizeHandle() {
@@ -39,6 +38,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <floor />
 </template>
 <style lang="scss">
 #about {

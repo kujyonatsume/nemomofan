@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import img_Meta from "@/components/img_Meta.vue"
-onMounted(ResetfloorPos)
-
 var photos = ref<string[]>()
 var formData = new FormData()
 var { error, data } = await useFetch('/api/photo')
@@ -56,4 +54,5 @@ async function update() {
       <img :src="'/photos/' + item" width="200" />
     </div>
   </div>
+  <floor />
 </template>
