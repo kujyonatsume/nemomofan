@@ -3,14 +3,6 @@ var prop = defineProps({
   title: String,
   routes: Array<Itabbar>
 })
-var none = ref(false)
-onMounted(() => {
-  width()
-  window.addEventListener("resize", width)
-})
-function width() {
-  none.value = window.innerWidth > 650
-}
 
 interface Itabbar {
   display?: boolean
@@ -21,8 +13,6 @@ interface Itabbar {
 <template>
   <header class="fixed-top">
     <div id="tab-bar" class="position-absolute container-fluid">
-      <a v-if="none" class="position-absolute" href="https://www.youtube.com/@NemesisXDFP" target="_blank">
-        <img id="qrcode" src="/images/QR_code.png" title="https://www.youtube.com/@NemesisXDFP"></a>
       <h1 id="top-title" class="d-flex justify-content-center">{{ title }}</h1>
       <nav class="navbar navbar-nav-scroll navbar-expand justify-content-center">
         <ul class="navbar-nav nav-item" v-for="r in routes">

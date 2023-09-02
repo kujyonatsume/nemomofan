@@ -49,7 +49,7 @@ function BigCardMount() {
   </div>
   <div v-if="id > -1" id="card-all" class="fixed-top" @click="() => CardClick(id = -1)">
     <div id="card-s2" style="position: fixed;">
-      <BigCard :data="messages![id]" @vnode-mounted="() => BigCardMount()" />
+      <BigCard :data="messages![id]" @vue:mounted="() => BigCardMount()" />
     </div>
   </div>
 </template>

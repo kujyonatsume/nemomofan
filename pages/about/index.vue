@@ -32,8 +32,8 @@ onMounted(() => {
         <h2>{{ key }}</h2>
         <div class="d-flex justify-content-center">
           <div id="listCol" v-for="data in list">
-            <img v-if="data.icon" :src=data.icon width="200">
-            <p id="name">{{ data.name }}</p>
+            <img :src="`/images/${data}.jpg`" width="200" height="200">
+            <p id="name">{{ data }}</p>
           </div>
         </div>
       </div>
@@ -43,7 +43,6 @@ onMounted(() => {
 <style lang="scss">
 #about {
   color: #ff5177;
-  font-family: 'SetoFont';
   top: 20%;
   left: 25%;
   width: 50%;

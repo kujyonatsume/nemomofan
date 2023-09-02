@@ -4,7 +4,7 @@ import tab_bar from '@/components/tab-bar.vue'
 onMounted(() => {
   ResetfloorPos()
   window.addEventListener('scroll', handleScroll)
-
+  window.addEventListener('resize', ResetfloorPos)
 })
 function handleScroll() {
   var $tab_bar = $('#tab-bar'),

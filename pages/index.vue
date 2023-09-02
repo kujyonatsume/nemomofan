@@ -1,10 +1,11 @@
 <script setup lang="ts">
-var DEV = ref(import.meta.env.DEV)
-onMounted(ResetfloorPos)
+var videoUrl = ref("https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview")
+
 </script>
 <template>
   <div class="d-flex justify-content-center">
-    <iframe v-if="DEV" src="https://drive.google.com/file/d/1GVXFKYLMcAWYRl0MnB4tfjjoao5d41wZ/preview" width="1600"
-      height="900" allow="autoplay"></iframe>
+    <iframe :src=videoUrl width="1440" height="810"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   </div>
 </template>

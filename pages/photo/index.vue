@@ -53,7 +53,7 @@ async function update() {
       <button class="btn btn-outline-secondary" type="button" @click="update">上傳</button>
     </div>
     <div id="broad_item" class="d-flex justify-content-center" v-for="item in photos ">
-      <img :src="'/photos/' + item" width="200px" />
+      <img :src="'/photos/' + item" width="200" />
     </div>
   </div>
 </template>
