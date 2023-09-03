@@ -1,12 +1,12 @@
 {
   "name": "nemomofan",
   "scripts": {
-    "dev": "yarn env PORT=1000 nuxt dev",
-    "web": "nuxt generate",
-    "build": "nuxt build",
-    "start": "yarn env HOST=localhost nuxt preview",
+    "dev": "yarn nuxt dev ./test -p 1000 ",
+    "web": "nuxt generate ./html",
+    "build": "nuxt build --dotenv .env",
+    "start": "yarn nuxt preview",
     "postinstall": "nuxt prepare",
-    "env": "cross-env"
+    "env": "cross-env HOST=localhost"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
