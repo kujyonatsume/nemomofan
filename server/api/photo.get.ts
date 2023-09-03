@@ -1,6 +1,5 @@
-import { readdirSync } from "fs";
+import { MakeAndReadDir } from "../fn";
 
 export default defineEventHandler((event) => {
-  var { imageDir } = useRuntimeConfig(event)
-  return readdirSync(imageDir)
+  return MakeAndReadDir('./photos')
 })

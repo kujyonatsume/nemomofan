@@ -1,9 +1,9 @@
 {
   "name": "nemomofan",
   "scripts": {
-    "dev": "yarn nuxt dev ./test -p 1000 ",
+    "dev": "yarn nuxt dev -p 1000",
     "web": "nuxt generate ./html",
-    "build": "nuxt build --dotenv .env",
+    "build": "nuxt build --dotenv pro.env",
     "start": "yarn nuxt preview",
     "postinstall": "nuxt prepare",
     "env": "cross-env HOST=localhost"
