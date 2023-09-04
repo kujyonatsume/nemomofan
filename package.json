@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "yarn nuxt dev -p 1000",
     "web": "nuxt generate ./html",
-    "build": "nuxt build --dotenv pro.env",
-    "start": "yarn nuxt preview",
+    "build": "nuxt build",
+    "start": "yarn env nuxt preview",
     "postinstall": "nuxt prepare",
     "env": "cross-env HOST=localhost"
   },

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import img_Meta from "@/components/img_Meta.vue"
-var photos = ref<string[]>()
 var formData = new FormData()
-var { error, data } = await useFetch('/api/photo')
-console.log(error);
-if (!error.value?.message) photos.value = data.value || []
+const { error, data: photos } = await useFetch('/api/photo')
+
+if (error) console.log(error);
 
 function onInputFile(e: Event) {
   var file = (<HTMLInputElement>e.target).files?.item(0)
@@ -45,14 +44,19 @@ async function update() {
 
   <Meta content="https://www.nemomofan.com/message" property="og:url" />
   <img_Meta />
-  <div class="row row-cols-auto">
-    <div class="input-group">
+  <div class="container">
+    <div id="uploadbar" class="input-group">
       <input type="file" class="form-control" @change="onInputFile">
       <button class="btn btn-outline-secondary" type="button" @click="update">上傳</button>
     </div>
-    <div id="broad_item" class="d-flex justify-content-center" v-for="item in photos ">
-      <img :src="'/photos/' + item" width="200" />
+    <div class="row row-cols-auto justify-content-center">
+      <img id="broad_item" v-for="item in photos" :src="'data:image/jpeg;base64,' + item" width="200" />
     </div>
   </div>
   <floor />
 </template>
+<style lang="scss">
+#broad_item {
+  padding: 5px;
+}
+</style>

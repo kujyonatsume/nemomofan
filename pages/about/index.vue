@@ -31,7 +31,7 @@ onMounted(() => {
         <h2>{{ key }}</h2>
         <div class="d-flex justify-content-center">
           <div id="listCol" v-for="data in list">
-            <img :src="`/images/${data}.jpg`" width="200" height="200">
+            <img :src="`/images/icon/${data}.jpg`" width="200" height="200">
             <p id="name">{{ data }}</p>
           </div>
         </div>
