@@ -43,15 +43,8 @@ async function update() {
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/message" property="og:url" />
-  <img_Meta />
-  <div class="container">
-    <div id="uploadbar" class="input-group">
-      <input type="file" class="form-control" @change="onInputFile">
-      <button class="btn btn-outline-secondary" type="button" @click="update">上傳</button>
-    </div>
-    <div class="row row-cols-auto justify-content-center">
-      <img id="broad_item" v-for="item in photos" :src="'data:image/jpeg;base64,' + item" width="200" />
-    </div>
+  <div class="row justify-content-center">
+    <img id="broad_item" v-for="item in photos" :src="`/photo/${item}`" :height="200" />
   </div>
   <floor />
 </template>

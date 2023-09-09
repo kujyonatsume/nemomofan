@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readdirSync } from "fs"
+import { existsSync, mkdirSync, readdirSync, readFileSync } from "fs"
 
 export default defineEventHandler((event) => {
   var { imageDir } = useRuntimeConfig(event)

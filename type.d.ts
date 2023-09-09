@@ -1,4 +1,4 @@
-interface UserMessage {
+interface IUserMessage {
     name: string;
     text: string;
 }

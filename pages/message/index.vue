@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const messages = ref<UserMessage[]>();
+const messages = ref<IUserMessage[]>();
 const id = ref<number>(-1)
 onMounted(() => {
   var scrollY = window.scrollY
@@ -7,6 +7,11 @@ onMounted(() => {
   function scrollHandle() {
     if (id.value > -1) scrollY = window.scrollY
     else window.scrollY = scrollY
+  }
+  window.addEventListener('resize', resizeHandle)
+  function resizeHandle() {
+    var s1 = $('#card-s1');
+
   }
 })
 
@@ -23,7 +28,8 @@ function BigCardMount() {
     var bigcard = $('#card-s2');
     var cardbg = $('#card-all');
     if (!bigcard) return
-    bigcard.css('top', ((cardbg.height()! - bigcard.height()!) / 2) + 'px').css('left', ((cardbg.width()! - bigcard.width()!) / 2) + 'px')
+    bigcard.css('top', ((cardbg.height()! - bigcard.outerHeight(true)!) / 2) + 'px')
+      .css('left', ((cardbg.width()! - bigcard.outerWidth(true)!) / 2) + 'px')
   }
 }
 
@@ -42,7 +48,7 @@ function BigCardMount() {
 
   <Meta content="https://www.nemomofan.com/message" property="og:url" />
 
-  <div class="row row-cols-auto justify-content-center">
+  <div class="row justify-content-center">
     <div id="card-s1" v-for="(data, i) in messages" @click="() => CardClick(id = i)">
       <BigCard :data="data" :mount="false" v-if="id != i" />
     </div>
@@ -62,41 +68,54 @@ function BigCardMount() {
   background-color: #0004;
 }
 
-//#card
-@for $size from 1 through 2 {
-  #card-s#{$size} {
-    $height: 250px;
-    $width: 350px;
-    
-    @if $size == 1 {
-      margin: 5px;
-    }
+@mixin cardsize($height, $width, $font: 16px) {
+  @for $size from 1 through 2 {
 
-    padding: unset;
-    width: calc($width * $size);
-    height: $height;
+    //#card
+    #card-s#{$size} {
+      @if $size ==1 {
+        margin: 5px;
+      }
 
-    #card-bg {
-      width: 100%;
+      padding: unset;
+      width: calc($width * $size);
       height: calc($height * $size);
-      padding: calc(10px * $size);
-      font-size: calc(16px * $size);
 
-      color: #ff5177;
-      background-color: #ffdee9;
-      background-repeat: no-repeat;
-      background-image: url(/images/bg-card.png);
+      #card-bg {
+        width: 100%;
+        height: 100%;
+        padding: calc(10px * $size);
+        font-size: calc($font * $size);
 
-      background-position-y: calc(($height - 85px) * $size);
-      background-size: calc(75px * $size);
-      border-radius: calc(10px * $size);
+        color: #ff5177;
+        background-color: #ffdee9;
+        background-repeat: no-repeat;
+        background-image: url(/images/bg-card.png);
 
-      #username {
-        text-align: center;
-        position: relative;
-        margin-top: 10px;
+        background-position-y: calc(($height - 85px) * $size);
+        background-size: calc(75px * $size);
+        border-radius: calc(10px * $size);
+
+        #username {
+          text-align: center;
+          position: relative;
+        }
       }
     }
   }
 }
+
+@include cardsize(250px, 400px);
+
+@media(max-width:820px) {
+  @include cardsize(300px, 300px)
+}
+
+@media(max-width:500px) {
+  @include cardsize(250px, 200px, 8px)
+}
+
+
+
+
 </style>

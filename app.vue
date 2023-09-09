@@ -2,7 +2,9 @@
 import tab_bar from '@/components/tab-bar.vue'
 
 onMounted(() => {
+  if (import.meta.env.DEV) alert(document.body.clientHeight + ',' + document.body.clientWidth)
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('resize', handleResize)
 })
 function handleScroll() {
   var $tab_bar = $('#tab-bar'),
@@ -15,7 +17,17 @@ function handleScroll() {
     $tab_bar.animate({ top: -title_h + 'px' });
   }
 }
-
+function handleResize() {
+  if ($('body').width()! < 650) {
+    $('body').css('background-position-x', `-220px`);
+  }
+  else if ($('body').width()! < 870) {
+    $('body').css('background-position-x', `${$('body').width()! - 870}px`);
+  }
+  else {
+    $('body').css('background-position-x', 'none');
+  }
+}
 </script>
 <template>
   <Title>太陽伴星觀測報告 - 涅默Nemesis 一周年紀念</Title>
@@ -26,8 +38,11 @@ function handleScroll() {
   <Meta content="TW" name="distribution" />
   <Meta content="夏目" name="author" />
   <Meta content="website" property="og:type" />
-  <Meta name="keywords" content="涅默Nemesis 涅默Nemesis一周年 絆星紀念活動 涅默Nemesis紀念活動" />
+
+  <Meta name="keywords" content="涅默一周年 絆星紀念活動 涅默紀念網站" />
   <Meta name="robots" content="index, follow" />
+  <Meta name="googlebot-news" content="noindex" />
+
 
   <Meta content="#dda0dd" name="theme-color" />
 
@@ -51,13 +66,12 @@ function handleScroll() {
   <main id="main">
     <NuxtPage />
   </main>
-
 </template>
 <style lang="scss">
 body {
   font-family: 'SetoFont', 'Noto Serif TC', sans-serif;
   background-size: cover;
-  background-position: center;
+  background-position: none;
   background-attachment: fixed;
   background-image: url(/images/2.jpg);
   -ms-overflow-style: none;
@@ -80,8 +94,8 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
-a, a:hover {
+a,
+a:hover {
   color: #ffbebe;
 }
-
 </style>

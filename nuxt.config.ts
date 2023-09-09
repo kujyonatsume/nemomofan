@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+    ssr: true,
     routeRules: {
         '/discord': { redirect: 'https://discord.gg/s6TNgRZ5Bh' }
     },
@@ -6,6 +7,6 @@ export default defineNuxtConfig({
     plugins: [{ src: "~/plugins/jquery", mode: "client" }],
     css: ["@/assets/style.scss"],
     runtimeConfig: {
-        imageDir: './public/images/photos'
+        imageDir: 'public/photo'
     }
 })
