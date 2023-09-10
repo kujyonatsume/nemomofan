@@ -19,9 +19,9 @@ onMounted(() => {
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" name="twitter:site" />
   <Meta content="涅默Nemesis一周年紀念活動" property="og:site_name" />
 
-  <Meta content="企劃組成員" property="description" />
-  <Meta content="企劃組成員" property="og:description" />
-  <Meta content="企劃組成員" name="twitter:description" />
+  <Meta content="企劃組成員及工作分配" property="description" />
+  <Meta content="企劃組成員及工作分配" property="og:description" />
+  <Meta content="企劃組成員及工作分配" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/about" property="og:url" />
 
