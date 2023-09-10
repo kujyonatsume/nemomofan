@@ -39,11 +39,6 @@ function handleResize() {
   <Meta content="夏目" name="author" />
   <Meta content="website" property="og:type" />
 
-  <Meta name="keywords" content="涅默一周年 絆星紀念活動 涅默紀念網站" />
-  <Meta name="robots" content="index, follow" />
-  <Meta name="googlebot-news" content="noindex" />
-
-
   <Meta content="#dda0dd" name="theme-color" />
 
   <Meta content="涅默Nemesis 一周年紀念活動" property="og:site_name" />
@@ -52,9 +47,12 @@ function handleResize() {
   <Meta content="涅默Nemesis 一周年紀念活動" property="og:title" />
   <Meta content="涅默Nemesis 一周年紀念活動" name="twitter:site" />
 
-  <Meta content="恭喜默默 一周年啦~~" property="description" />
-  <Meta content="恭喜默默 一周年啦~~" property="og:description" />
-  <Meta content="恭喜默默 一周年啦~~" name="twitter:description" />
+  <Meta content="涅默一周年 絆星紀念活動 涅默紀念網站
+  恭喜默默 一周年啦~~" property="description" />
+  <Meta content="涅默一周年 絆星紀念活動 涅默紀念網站
+  恭喜默默 一周年啦~~" property="og:description" />
+  <Meta content="涅默一周年 絆星紀念活動 涅默紀念網站
+  恭喜默默 一周年啦~~" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/" property="og:url" />
   <tab_bar title="涅默Nemesis 一周年紀念活動" :routes="[
@@ -96,6 +94,7 @@ body::-webkit-scrollbar {
 
 a,
 a:hover {
+  text-decoration: none;
   color: #ffbebe;
 }
 </style>

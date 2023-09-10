@@ -2,7 +2,7 @@
   "name": "nemomofan",
   "scripts": {
     "dev": "yarn nuxt dev -p 1000",
-    "web": "nuxt generate ./html",
+    "web": "nuxt generate",
     "build": "nuxt build",
     "start": "yarn env nuxt preview",
     "postinstall": "nuxt prepare",

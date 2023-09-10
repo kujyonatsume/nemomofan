@@ -31,8 +31,9 @@ onMounted(() => {
         <h2>{{ key }}</h2>
         <div class="d-flex justify-content-center">
           <div id="listCol" v-for="data in list">
-            <img :src="`/images/icon/${data}.jpg`" width="200" height="200">
-            <p id="name">{{ data }}</p>
+            <img :src="`/images/icon/${data[0]}.jpg`" width="200" height="200">
+            <p id="name">{{ data[0] }}</p>
+            <a :href="'https://twitter.com/' + data[1]">@{{ data[1] }}</a>
           </div>
         </div>
       </div>
