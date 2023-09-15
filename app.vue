@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import tab_bar from '@/components/tab-bar.vue'
 const ds = ref()
-const is926 = ref(Date.parse('2023/9/26 20:00:00') - Date.now() < 1)
+const is926 = ref(false)
 
 onBeforeMount(() => {
+  is926.value = /localhost|([0-9]{1,3}.?){4}|beta/.test(location.hostname)
+  console.log(is926.value);
   window.addEventListener('scroll', handleScroll)
+  var timer: NodeJS.Timer
+  const interval = {
+    start: () => timer = setInterval(getdate, 1000),
+    clear: () => clearInterval(timer)
+  }
 
-  is926.value ||= location.hostname.startsWith("beta")
   if (!is926.value) {
-    var timer: NodeJS.Timer
-    const interval = {
-      start: () => timer = setInterval(getdate, 1000),
-      clear: () => clearInterval(timer)
-    }
     interval.start()
-    function getdate() {
-      var date = Date.parse('2023/9/26 20:00:00') - Date.now()
-      is926.value = date < 1
-      if (is926.value) {
-        interval.clear()
-      } else {
-        const d = new Date(date);
-        ds.value = `${d.getUTCDate() - 1} 天 ${d.getUTCHours()} 小時 ${d.getUTCMinutes()} 分鐘 ${d.getUTCSeconds()} 秒`
-      }
+  }
+
+  function getdate() {
+    var date = Date.parse('2023/9/26 20:00:00') - Date.now()
+    is926.value = date < 1
+    if (is926.value) {
+      interval.clear()
+    } else {
+      const d = new Date(date);
+      ds.value = `${d.getUTCDate() - 1} 天 ${d.getUTCHours()} 小時 ${d.getUTCMinutes()} 分鐘 ${d.getUTCSeconds()} 秒`
     }
   }
 })
@@ -52,11 +54,24 @@ function handleScroll() {
 
   <Meta content="#dda0dd" name="theme-color" />
 
-  <Body v-if="!is926" id="open">
+  <Head v-if="!is926">
+    <Meta content="涅默Nemesis一周年紀念活動" property="title" />
+    <Meta content="涅默Nemesis一周年紀念活動" property="og:title" />
+    <Meta content="涅默Nemesis一周年紀念活動" name="twitter:site" />
+    <Meta content="涅默Nemesis一周年紀念活動" property="og:site_name" />
+
+    <Meta content="涅默一周年 倒數計時" property="description" />
+    <Meta content="涅默一周年 倒數計時" property="og:description" />
+    <Meta content="涅默一周年 倒數計時" name="twitter:description" />
+
+    <Meta content="https://www.nemomofan.com/" property="og:url" />
+  </Head>
+
+  <Body v-if="is926" id="open">
     <tab_bar title="涅默Nemesis 一周年紀念活動" :routes="[
-      { path: '/video', text: '太陽伴星觀測宣傳片' },
-      { path: '/message', text: '絆星留言版' },
-      { path: '/photo', text: '追星趣' },
+      { path: '/video', text: '觀測總集' },
+      { path: '/photo', text: '觀測報告' },
+      { path: '/message', text: '觀測記錄' },
       { path: '/about', text: '關於我們' }
     ]" />
 

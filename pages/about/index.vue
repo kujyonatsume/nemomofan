@@ -1,28 +1,16 @@
 <script setup lang="ts">
 const lists = useFetch("/api/list").data
-const id = ref<number>(-1)
-onMounted(() => {
-  var scrollY = window.scrollY
-  window.addEventListener("scroll", resizeHandle)
-  function resizeHandle() {
-    if (id.value > -1) scrollY = window.scrollY
-    else window.scrollY = scrollY
-  }
-})
 </script>
 <template>
   <Title>關於我們 - 涅默Nemesis一周年紀念活動</Title>
-  <Meta property="og:description" content="關於企劃組成員" />
 
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" property="title" />
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" property="og:title" />
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" name="twitter:site" />
-  <Meta content="涅默Nemesis一周年紀念活動" property="og:site_name" />
 
-  <Meta content="企劃組成員及工作分配" property="description" />
-  <Meta content="企劃組成員及工作分配" property="og:description" />
-  <Meta content="企劃組成員及工作分配" name="twitter:description" />
-
+  <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" property="description" />
+  <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" property="og:description" />
+  <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/about" property="og:url" />
 
@@ -33,8 +21,8 @@ onMounted(() => {
         <div class="d-flex justify-content-center">
           <div id="listCol" v-for="data in list">
             <img :src="`/images/icon/${data[0]}.jpg`" width="200" height="200">
-            <p id="name">{{ data[0] }}</p>
-            <a :href="'https://twitter.com/' + data[1]">@{{ data[1] }}</a>
+            <NuxtLink id="name" class="nav-link" :to="'https://twitter.com/' + data[1]" target="_blank"
+              :title="'@' + data[1]">{{ data[0] }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -73,6 +61,11 @@ onMounted(() => {
     #name {
       font-size: 20px;
       margin: unset;
+      border-radius: 0px 0px 20px 20px !important;
+    }
+
+    #name:hover {
+      background-color: #ffbebe;
     }
   }
 }

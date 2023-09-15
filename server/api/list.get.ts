@@ -3,7 +3,7 @@ export default defineEventHandler((event) => {
   return {
     LOGO設計: [['サヤカ', 'laipeng16']],
     總召: [['艾路貓', 'bkb0408']],
-    PV製作: [['AYC', 'ayc_reset']],
+    公車PV製作: [['AYC', 'ayc_reset']],
     紀念影片: [['一塊臘肉', 'ykuilru1'],],
     海報製作: [['表哥Cousin', 'cousin11296970'], ['五星級', 'cng35014284'],],
     繪師: [['優花', 'hana_yuukaa'], ['柊むらさき', 'hiragi_murasaki'],],

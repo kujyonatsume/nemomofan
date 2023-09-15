@@ -31,17 +31,15 @@ async function update() {
 
 </script>
 <template>
-  <Title>絆星留言板 - 涅默Nemesis一周年紀念活動</Title>
+  <Title>太陽伴星觀測報告 - 涅默Nemesis一周年紀念活動</Title>
 
-  <Meta content="絆星留言板 - 涅默Nemesis一周年紀念活動" property="title" />
-  <Meta content="絆星留言板 - 涅默Nemesis一周年紀念活動" property="og:title" />
-  <Meta content="絆星留言板 - 涅默Nemesis一周年紀念活動" name="twitter:site" />
-  <Meta content="涅默Nemesis一周年紀念活動" property="og:site_name" />
+  <Meta content="太陽伴星觀測報告 - 涅默Nemesis一周年紀念活動" property="title" />
+  <Meta content="太陽伴星觀測報告 - 涅默Nemesis一周年紀念活動" property="og:title" />
+  <Meta content="太陽伴星觀測報告 - 涅默Nemesis一周年紀念活動" name="twitter:site" />
 
-  <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="description" />
-  <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="og:description" />
-  <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
-
+  <Meta content="絆星們的觀測報告📷📷 相關tag請使用 #太陽伴星觀測報告 #涅默巡迴演唱中 #花嫁默默出巡囉" property="description" />
+  <Meta content="絆星們的觀測報告📷📷 相關tag請使用 #太陽伴星觀測報告 #涅默巡迴演唱中 #花嫁默默出巡囉" property="og:description" />
+  <Meta content="絆星們的觀測報告📷📷 相關tag請使用 #太陽伴星觀測報告 #涅默巡迴演唱中 #花嫁默默出巡囉" name="twitter:description" />
 
   <Meta content="https://www.nemomofan.com/photo" property="og:url" />
 
