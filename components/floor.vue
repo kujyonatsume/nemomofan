@@ -1,18 +1,3 @@
-<script setup lang="ts">
-onMounted(() => {
-  handleResize()
-  window.addEventListener('resize', handleResize)
-})
-function handleResize() {
-  var ptop = $('#tab-bar').outerHeight(true)
-  if (ptop) {
-    $('#main').css('padding-top', (ptop + 10) + 'px')
-    ptop = $('#main').outerHeight(true)!
-    var _floor = $('#floor').css('top', `${Math.max(ptop, window.innerHeight)}px`)
-    if (ptop < window.innerHeight) _floor.css('margin-top', '-34px')
-  }
-}
-</script>
 <template>
   <footer id="floor" class="text-center position-absolute">
     Copyright© 2023 九条夏目 | <a href="https://github.com/kujyonatsume/nemomofan" target="_blank"> <svg
@@ -22,3 +7,12 @@ function handleResize() {
       </svg>原始碼</a>
   </footer>
 </template>
+<style lang="scss">
+#floor {
+  color: #ffbebe;
+  background-color: rgb(46, 0, 0);
+  padding: 5px;
+  margin-top: -34px;
+  width: 100%;
+}
+</style>

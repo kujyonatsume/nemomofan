@@ -19,6 +19,7 @@ if (value) data = ref(value[Number(route.params.id)])
     <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="og:description" />
     <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
+
     <Meta content="https://www.nemomofan.com/message" property="og:url" />
 
     <div v-if="data" id="card">

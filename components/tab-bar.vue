@@ -1,7 +1,7 @@
 <script setup lang="ts">
 var prop = defineProps({
   title: String,
-  routes: Array<Itabbar>
+  routes: Array<Itabbar>,
 })
 
 interface Itabbar {

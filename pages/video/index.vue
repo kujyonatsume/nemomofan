@@ -1,5 +1,5 @@
 <script setup lang="ts">
-var videoUrl = "https://www.youtube.com/embed/LgTR3GCxLIM?si=t5RzByDDT_UBYkkv"
+var videoUrl = "https://www.youtube.com/embed/rZrFIkVnXZs?si=LL9_kNIbQGC_bRII"
 </script>
 <template>
   <Title>太陽伴星觀測報告 - 涅默Nemesis 一周年紀念</Title>
@@ -13,6 +13,7 @@ var videoUrl = "https://www.youtube.com/embed/LgTR3GCxLIM?si=t5RzByDDT_UBYkkv"
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="og:description" />
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
+
   <Meta content="https://www.nemomofan.com/video" property="og:url" />
   
   <div class="d-flex justify-content-center">
@@ -20,7 +21,6 @@ var videoUrl = "https://www.youtube.com/embed/LgTR3GCxLIM?si=t5RzByDDT_UBYkkv"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>
   </div>
-  <floor />
 </template>
 <style lang="scss">
 #video {

@@ -42,11 +42,12 @@ async function update() {
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="og:description" />
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
+
   <Meta content="https://www.nemomofan.com/photo" property="og:url" />
+
   <div class="row justify-content-center">
     <img id="broad_item" v-for="item in photos" :src="`/photo/${item}`" :height="200" />
   </div>
-  <floor />
 </template>
 <style lang="scss">
 #broad_item {

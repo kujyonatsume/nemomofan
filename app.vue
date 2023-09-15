@@ -1,22 +1,32 @@
 <script setup lang="ts">
 import tab_bar from '@/components/tab-bar.vue'
-const ds = ref('')
-const title = ref('一周年倒數計時')
-const is926 = ref(false)
-getdate()
-onMounted(() => {
-  //  if (import.meta.env.DEV) alert(document.body.clientHeight + ',' + document.body.clientWidth)
-  window.addEventListener('scroll', handleScroll)
-  window.addEventListener('resize', handleResize)
-  setInterval(getdate, 1000)
-})
-function getdate() {
-  var date = new Date('2023/9/26').getTime() - Date.now()
-  if(is926.value = date < 0) title.value = '涅默Nemesis 一周年紀念'
-  const d = new Date(date);
-  ds.value = `${d.getUTCDate()} 天 ${d.getUTCHours()} 小時 ${d.getUTCMinutes()} 分鐘 ${d.getUTCSeconds()} 秒`
+const ds = ref()
+const is926 = ref(Date.parse('2023/9/26 20:00:00') - Date.now() < 1)
 
-}
+onBeforeMount(() => {
+  window.addEventListener('scroll', handleScroll)
+
+  is926.value ||= location.hostname.startsWith("beta")
+  if (!is926.value) {
+    var timer: NodeJS.Timer
+    const interval = {
+      start: () => timer = setInterval(getdate, 1000),
+      clear: () => clearInterval(timer)
+    }
+    interval.start()
+    function getdate() {
+      var date = Date.parse('2023/9/26 20:00:00') - Date.now()
+      is926.value = date < 1
+      if (is926.value) {
+        interval.clear()
+      } else {
+        const d = new Date(date);
+        ds.value = `${d.getUTCDate() - 1} 天 ${d.getUTCHours()} 小時 ${d.getUTCMinutes()} 分鐘 ${d.getUTCSeconds()} 秒`
+      }
+    }
+  }
+})
+
 function handleScroll() {
   var $tab_bar = $('#tab-bar'),
     scrollPos = $(window).scrollTop(),
@@ -28,20 +38,10 @@ function handleScroll() {
     $tab_bar.animate({ top: -title_h + 'px' });
   }
 }
-function handleResize() {
-  if ($('body').width()! < 650) {
-    $('body').css('background-position-x', `-220px`);
-  }
-  else if ($('body').width()! < 870) {
-    $('body').css('background-position-x', `${$('body').width()! - 870}px`);
-  }
-  else {
-    $('body').css('background-position-x', 'none');
-  }
-}
+
 </script>
 <template>
-  <Title>{{ title }}</Title>
+  <Title>涅默Nemesis 一周年紀念</Title>
   <Link href="site_icon.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="text/html; charset=UTF-8" http-equiv="content-type" />
   <Meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0"
@@ -52,64 +52,78 @@ function handleResize() {
 
   <Meta content="#dda0dd" name="theme-color" />
 
-  <tab_bar v-if="is926" title="涅默Nemesis 一周年紀念活動" :routes="[
-    { path: '/video', text: '太陽伴星觀測宣傳片' },
-    { path: '/message', text: '絆星留言版' },
-    { path: '/photo', text: '追星趣' },
-    { path: '/about', text: '關於我們' }
-  ]" />
-  <main id="main">
-    <NuxtPage v-if="is926" />
-    <div v-else id="timer">
-      <h2>倒數</h2>
-      <h1>{{ ds }}</h1>
+  <Body v-if="!is926" id="open">
+    <tab_bar title="涅默Nemesis 一周年紀念活動" :routes="[
+      { path: '/video', text: '太陽伴星觀測宣傳片' },
+      { path: '/message', text: '絆星留言版' },
+      { path: '/photo', text: '追星趣' },
+      { path: '/about', text: '關於我們' }
+    ]" />
+
+    <main>
+      <div id="page">
+        <NuxtPage />
+      </div>
+    </main>
+    <floor />
+  </Body>
+
+  <Body v-else id="close">
+    <div id="timer" class="d-flex justify-content-center">
+      <img src="">
+      <div>
+        <h2>倒數</h2>
+        <h1>{{ ds }}</h1>
+      </div>
+      <img src="">
     </div>
-  </main>
+  </Body>
 </template>
 <style lang="scss">
 body {
   font-family: 'SetoFont', 'Noto Serif TC', sans-serif;
   background-size: cover;
-  background-position: none;
   background-attachment: fixed;
-  background-image: url(/images/2.jpg);
+  background-position: center;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
+}
+
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+#close {
+  background-image: url(/images/bg-close.jpg);
+}
+
+#open {
+  background-image: url(/images/bg-open.jpg);
 }
 
 #timer {
   position: relative;
   top: 25vh;
-  width: 100%;
   height: 50vh;
-  background-color: #ffbebe85;
   text-align: center;
   font-size: xx-large;
+  background-color: #ffbebe85;
+
   h2 {
-    position: relative;
-    top: 5vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     font-size: 72px;
   }
-  h1 {
-    position: relative;
-    top: 15vh;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: 150px;
+
+  #page {
+    margin-bottom: 34px;
   }
-}
-
-body::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-#main {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-#floor {
-  color: #ffbebe;
-  background-color: rgb(46, 0, 0);
-  padding: 5px;
-  width: 100%;
 }
 
 a,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const messages = ref<IUserMessage[]>();
+const messages = ref((await useFetch('/api/message')).data);
 const id = ref<number>(-1)
 onMounted(() => {
   var scrollY = window.scrollY
@@ -18,8 +18,6 @@ onMounted(() => {
 function CardClick(i: number) {
   $('body').css('overflow', i > -1 ? 'hidden' : '');
 }
-var { data } = await useFetch('/api/message')
-messages.value = data.value || []
 
 function BigCardMount() {
   resizeHandle()
@@ -46,6 +44,7 @@ function BigCardMount() {
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" property="og:description" />
   <Meta content="快來和我們一起留言恭喜默默一周年吧~" name="twitter:description" />
 
+
   <Meta content="https://www.nemomofan.com/message" property="og:url" />
 
   <div class="row justify-content-center">
@@ -58,7 +57,6 @@ function BigCardMount() {
       <BigCard :data="messages![id]" @vue:mounted="() => BigCardMount()" />
     </div>
   </div>
-  <floor />
 </template>
 <style lang="scss">
 #card-all {
@@ -114,8 +112,4 @@ function BigCardMount() {
 @media(max-width:500px) {
   @include cardsize(250px, 200px, 8px)
 }
-
-
-
-
 </style>

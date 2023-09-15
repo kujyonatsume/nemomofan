@@ -23,6 +23,7 @@ onMounted(() => {
   <Meta content="企劃組成員及工作分配" property="og:description" />
   <Meta content="企劃組成員及工作分配" name="twitter:description" />
 
+
   <Meta content="https://www.nemomofan.com/about" property="og:url" />
 
   <div id="about" class="d-flex justify-content-center">
@@ -39,7 +40,6 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <floor />
 </template>
 <style lang="scss">
 #about {
