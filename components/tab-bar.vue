@@ -1,5 +1,6 @@
 <script setup lang="ts">
-var prop = defineProps({
+
+defineProps({
   title: String,
   routes: Array<Itabbar>,
 })
@@ -23,7 +24,6 @@ interface Itabbar {
   </header>
 </template>
 <style lang="scss">
-
 #tab-bar {
   background-color: #0004;
 }
