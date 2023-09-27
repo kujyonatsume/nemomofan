@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     ssr: true,
     routeRules: {
-        '/discord': { redirect: 'https://discord.gg/s6TNgRZ5Bh' }
+        '/discord': { redirect: 'https://discord.gg/nemesissuki' }
     },
     devtools: { enabled: false },
     plugins: [
