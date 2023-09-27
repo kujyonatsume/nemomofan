@@ -8,13 +8,12 @@ const lists = useFetch("/api/list").data
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" property="og:title" />
   <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" name="twitter:site" />
 
-  <Meta content="關於我們 - 涅默Nemesis一周年紀念活動" property="og:site_name" />
-  
   <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" property="description" />
   <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" property="og:description" />
   <Meta content="一周年企劃組工作分配 歡迎加入我們的非官方DC粉絲群 : https://discord.gg/nemesissuki" name="twitter:description" />
 
-  <Meta content="https://www.nemomofan.com/images/card-x.jpg" property="og:image" />
+  <Meta content="https://static.wixstatic.com/media/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg" property="og:image" />
+  <Meta content="https://static.wixstatic.com/media/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg" property="twitter:image" />
 
   <Meta content="https://www.nemomofan.com/1st/about" property="og:url" />
 
@@ -24,7 +23,7 @@ const lists = useFetch("/api/list").data
         <h2>{{ key }}</h2>
         <div class="d-flex justify-content-center">
           <div id="listCol" v-for="data in list">
-            <img :src="`/images/icon/${data[1]}.jpg`" width="200" height="200">
+            <img :src="`/images/icon/${data[1]}.jpg`" width="180" height="180">
             <NuxtLink id="name" class="nav-link" :to="'https://twitter.com/' + data[1]" target="_blank"
               :title="'@' + data[1]">{{ data[0] }}</NuxtLink>
           </div>

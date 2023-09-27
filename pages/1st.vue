@@ -1,13 +1,10 @@
 <script setup lang="ts">
 const ds = ref('')
 const is926 = ref(Date.parse('2023/9/26 20:00:00') - Date.now() < 0)
-const url = ref('')
 
 onBeforeMount(() => {
-  url.value = location.origin
-  is926.value = /localhost|beta/.test(location.hostname)
-  console.log(is926.value);
   window.addEventListener('scroll', handleScroll)
+  /*
   var timer: NodeJS.Timer
   const interval = {
     start: () => timer = setInterval(getdate, 1000),
@@ -28,6 +25,7 @@ onBeforeMount(() => {
       ds.value = `${d.getUTCDate() - 1} 天 ${d.getUTCHours()} 小時 ${d.getUTCMinutes()} 分鐘 ${d.getUTCSeconds()} 秒`
     }
   }
+  */
 })
 
 function handleScroll() {
@@ -44,18 +42,21 @@ function handleScroll() {
 
 </script>
 <template>
-  <Title>涅默Nemesis 一周年紀念</Title>
+  <Title>涅默Nemesis 一周年紀念活動</Title>
 
   <Link href="site_icon.ico" rel="shortcut icon" type="image/x-icon" />
 
-  <Meta content="涅默Nemesis 一周年紀念活動" property="title" />
-  <Meta content="涅默Nemesis 一周年紀念活動" property="og:title" />
   <Meta content="涅默Nemesis 一周年紀念活動" property="og:site_name" />
+  
+  <Meta content="涅默Nemesis 一周年紀念倒數" property="title" />
+  <Meta content="涅默Nemesis 一周年紀念倒數" property="og:title" />
 
-  <Meta content="涅默一周年 倒數計時" property="description" />
-  <Meta content="涅默一周年 倒數計時" property="og:description" />
 
-  <Meta content="https://www.nemomofan.com/images/card-x.jpg" property="og:image" />
+  <Meta :content=ds property="description" />
+  <Meta :content=ds property="og:description" />
+  
+  <Meta content="https://static.wixstatic.com/media/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg" property="og:image" />
+  <Meta content="https://static.wixstatic.com/media/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg" property="twitter:image" />
 
   <Meta content="http://www.nemomofan.com/1st" property="og:url" />
 
@@ -74,7 +75,7 @@ function handleScroll() {
     </main>
     <floor />
   </Body>
-
+  <!--
   <Body v-else id="close">
     <div id="timer" class="d-flex justify-content-center">
       <div>
@@ -87,6 +88,7 @@ function handleScroll() {
       <img id="wedding" src="/images/wedding.png" style="padding-left: 10px;">
     </div>
   </Body>
+  -->
 </template>
 <style lang="scss">
 body {

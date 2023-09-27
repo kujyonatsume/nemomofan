@@ -33,13 +33,12 @@ function BigCardMount() {
   <Meta content="太陽伴星觀測記錄 - 涅默Nemesis一周年紀念活動" property="title" />
   <Meta content="太陽伴星觀測記錄 - 涅默Nemesis一周年紀念活動" property="og:title" />
 
-  <Meta content="太陽伴星觀測記錄 - 涅默Nemesis一周年紀念活動" property="og:site_name" />
-
   <Meta content="這裡記錄著我們所觀測到的她 每一次的觀測都帶給我們不同的心情~" property="description" />
   <Meta content="這裡記錄著我們所觀測到的她 每一次的觀測都帶給我們不同的心情~" property="og:description" />
   <Meta content="這裡記錄著我們所觀測到的她 每一次的觀測都帶給我們不同的心情~" name="twitter:description" />
 
-  <Meta content="https://www.nemomofan.com/images/card-x.jpg" property="og:image" />
+  <Meta content="https://static.wixstatic.com/media/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg" property="og:image" />
+  <Meta content="https://static.wixstatic.com/media/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_539ad0c2513e4467a13841b87e20398d%7Emv2.jpg" property="twitter:image" />
 
   <Meta content="https://www.nemomofan.com/1st/message" property="og:url" />
 

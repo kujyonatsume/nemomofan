@@ -6,7 +6,6 @@ defineProps({
 })
 
 interface Itabbar {
-  display?: boolean
   path: string
   text: string
 }

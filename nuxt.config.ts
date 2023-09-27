@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     devtools: { enabled: false },
     plugins: [
         { src: "~/plugins/jquery", mode: "client" },
+        { src: "~/plugins/bootstrap", mode: "client"},
+        { src: "~/plugins/yt", mode: "client"},
+        
     ],
     css: ["@/assets/style.scss"],
     runtimeConfig: {
