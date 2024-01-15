@@ -1,6 +1,3 @@
-<script setup lang="ts">
-
-</script>
 <template>
   <Title>太陽伴星觀測總集 - 涅默Nemesis 一周年紀念</Title>
 

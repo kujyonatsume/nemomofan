@@ -9,3 +9,4 @@ var data = ref(p.data as IUserMessage)
     <p id="username">{{ data!.name }}</p>
   </div>
 </template>
+sr

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const ds = ref('')
-const is926 = ref(Date.parse('2023/9/26 20:00:00') - Date.now() < 0)
 
 onBeforeMount(() => {
   window.addEventListener('scroll', handleScroll)
@@ -52,15 +50,15 @@ function handleScroll() {
   <Meta content="涅默Nemesis 一周年紀念倒數" property="og:title" />
 
 
-  <Meta :content=ds property="description" />
-  <Meta :content=ds property="og:description" />
+  <Meta content=一周年紀念活動 property="description" />
+  <Meta content=一周年紀念活動 property="og:description" />
   
   <Meta content="https://static.wixstatic.com/media/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg" property="og:image" />
   <Meta content="https://static.wixstatic.com/media/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5d16f3_12f15efdd8aa4081b45c142c0da5f0e9%7Emv2.jpg" property="twitter:image" />
 
   <Meta content="http://www.nemomofan.com/1st" property="og:url" />
 
-  <Body v-if="is926" id="open">
+  <Body id="open">
 
     <tab-bar title="涅默Nemesis 一周年紀念活動" :routes="[
       { path: '/1st', text: '觀測總集' },
@@ -100,7 +98,7 @@ body {
   overflow: -moz-scrollbars-none;
 }
 
-body::-webkit-scrollbar {
+#open::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
 }

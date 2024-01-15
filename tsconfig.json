@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "types": [
-            "jquery"
+            "jquery",
+            "node"
         ]
     },
     "extends": "./.nuxt/tsconfig.json"
