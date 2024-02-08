@@ -61,9 +61,7 @@ function handleScroll() {
 </script>
 <template>
   <Title>涅默Nemesis 2024生日企劃</Title>
-
-  <Link href="site_icon.ico" rel="shortcut icon" type="image/x-icon" />
-
+  <Link href="site.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="涅默Nemesis 2024生日企劃" property="og:site_name" />
 
   <Meta content="涅默Nemesis 一周年紀念倒數" property="title" />
@@ -84,9 +82,9 @@ function handleScroll() {
   <Body v-if="dateline" id="open">
 
     <tab-bar title="涅默Nemesis 2024生日企劃" :routes="[
-      { path: '/birth2024', text: '2024生日紀念影片' },
-      { path: '/birth2024/puzzle', text: '拼圖' },
-      { path: '/birth2024/message', text: '留言板' },
+      { path: '/birth2024', text: '紀念影片' },
+      { path: '/birth2024/puzzle', text: '趣味拼圖' },
+      { path: '/birth2024/message', text: '生日祝賀版' },
       { path: '/birth2024/about', text: '關於我們' }
     ]" />
     <main>
@@ -124,7 +122,7 @@ body {
 }
 
 #close {
-  background-image: url(/images/block-birth-count.png);
+  background-image: url(/images/block-birth-count.jpg);
 }
 
 #timer {

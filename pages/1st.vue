@@ -41,9 +41,7 @@ function handleScroll() {
 </script>
 <template>
   <Title>涅默Nemesis 一周年紀念活動</Title>
-
-  <Link href="site_icon.ico" rel="shortcut icon" type="image/x-icon" />
-
+  <Link href="site.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="涅默Nemesis 一周年紀念活動" property="og:site_name" />
   
   <Meta content="涅默Nemesis 一周年紀念倒數" property="title" />
@@ -62,7 +60,7 @@ function handleScroll() {
 
     <tab-bar title="涅默Nemesis 一周年紀念活動" :routes="[
       { path: '/1st', text: '觀測總集' },
-      { path: '/1st/photo', text: '觀測報告' },
+//      { path: '/1st/photo', text: '觀測報告' },
       { path: '/1st/message', text: '觀測感言' },
       { path: '/1st/about', text: '關於我們' }
     ]" />

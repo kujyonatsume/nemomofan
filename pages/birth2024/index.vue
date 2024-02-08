@@ -1,8 +1,8 @@
 <template>
-  <Title>太陽伴星觀測總集 - 涅默Nemesis 一周年紀念</Title>
+  <Title>2024生日紀念影片 - 涅默Nemesis2024生日企劃</Title>
 
-  <Meta content="太陽伴星觀測總集 - 涅默Nemesis2024生日企劃" property="title" />
-  <Meta content="太陽伴星觀測總集 - 涅默Nemesis2024生日企劃" property="og:title" />
+  <Meta content="2024生日紀念影片 - 涅默Nemesis2024生日企劃" property="title" />
+  <Meta content="2024生日紀念影片 - 涅默Nemesis2024生日企劃" property="og:title" />
 
   <Meta content="這，是我所觀測到的她 - 獻給涅默與所有絆星" property="description" />
   <Meta content="這，是我所觀測到的她 - 獻給涅默與所有絆星" property="og:description" />

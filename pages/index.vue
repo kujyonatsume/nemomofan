@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import YouTubePlayer from 'yt-player';
 useHead({
   script: [{ src: "https://platform.twitter.com/widgets.js", async: true }]
+})
+
+onMounted(() => {
+  var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, controls: false })
+  player.load('PEtuFuEcKLc', true)
 })
 </script>
 <template>
@@ -57,8 +63,8 @@ useHead({
               獨自探索著地球上新鮮的事物<br>
               看到多采多姿的人類生活，卻無法融入其中<br>
               為了能結交更多的朋友、讓更多人聽見自己的聲音。<br>
-              <hr>
             </p>
+            <hr>
             <p>
               <strong>
                 鼓起勇氣將自身精神體數位化，<br>
@@ -103,21 +109,13 @@ useHead({
     <div class="d-flex justify-content-center">
       <div id="broad">
         <div class="d-flex justify-content-center">
-          <iframe width="1200" height="675" src="https://www.youtube.com/embed/QQ1o6L_RaV4?si=2oP4GDw77Vs23vP_"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-          <div class=" d-flex flex-column">
-            <button>123</button>
-            <button>123</button>
-            <button>123</button>
-            <button>123</button>
+          <div id="YouTubePlayer" width="1200" height="675">
+
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>-->
 </template>
 <style lang="scss">

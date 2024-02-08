@@ -1,5 +1,56 @@
 <script setup lang="ts">
-
+const list = ref([
+  "神綵",
+  "貄柚",
+  "茶拿鐵紅",
+  "ながと",
+  "雪城泉Izumi",
+  "Felix",
+  "餐桌原",
+  "諾米糰子",
+  "小亞",
+  "是南瓜麻糬又是南瓜湯",
+  "麵店賣水餃",
+  "涅絆黑洞倫十分",
+  "千萬本費南雪",
+  "小狼",
+  "子廷",
+  "情易",
+  "最喜歡捏摸的東邁",
+  "Justin_Huang",
+  "斑無",
+  "千束",
+  "Ro_Chen",
+  "Arno竹子",
+  "阿軒Axuan",
+  "紅薑小籠包",
+  "WatchXD",
+  "魚兒",
+  "楓カエデ",
+  "龍影",
+  "河豚",
+  "Sun_Sun",
+  "Qurakue",
+  "Sora",
+  "凱恩",
+  "無面騎士restar",
+  "kurumi",
+  "咻比嘟華",
+  "linlowshi",
+  "可樂",
+  "鋼彈盪單槓",
+  "達納特斯",
+  "White懷特",
+  "木子_Muzi",
+  "羽蔚凌晴",
+  "小翼小意義",
+  "はなことわる",
+  "Alopex",
+  "林Raven過勞Claw",
+  "一生推的絆星",
+  "絆顆花生飛魚吐司",
+  "雙層哈士堡"
+])
 </script>
 <template>
   <Title>太陽伴星觀測記錄 - 涅默Nemesis2024生日企劃</Title>
@@ -22,12 +73,12 @@
 
   <Body id="open">
     <div class="row justify-content-center">
-
+      <a class="col-3" target="_blank" v-for="name in list" :href="'/images/message/' + name + '.svg'">
+        <img :src="'/images/message/' + name + '.svg'" alt=""></a>
     </div>
   </Body>
 </template>
 <style lang="scss">
-
 @mixin cardsize($height, $width, $font: 16px) {
 
   #card-bg {

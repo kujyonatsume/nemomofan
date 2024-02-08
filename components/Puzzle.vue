@@ -17,6 +17,7 @@ var dsize = size * percent
 var border: number
 var _border: number
 var list_length: number
+var clear = ref(false)
 class ClipData {
   readonly row: number
   readonly col: number
@@ -38,7 +39,7 @@ function drawRandom() {
   for (const item of list) {
     for (const data of item) {
       clipRandom(data, range)
-      return
+      
     }
   }
 }
@@ -113,10 +114,6 @@ onMounted(() => {
       drawImage();
     }
   }
-  function genlist(row: number, col: number) {
-    return new Array(row * col).fill({})
-      .map((x, i) => [new ClipData(i, col, row)])
-  }
   canva.onmouseup = (e) => {
     if (!data) return;
     var items = data
@@ -127,6 +124,7 @@ onMounted(() => {
       top >= _border / 2 &&
       left < col - _border / 2 &&
       top < row - _border / 2
+
     for (const item of data) {
       if (inmap) {
         item.left = Math.round(item.left / dsize) * dsize
@@ -134,19 +132,12 @@ onMounted(() => {
       }
       items.push(...addLinkClip(item))
     }
+    console.log(data);
+    data = undefined
     list.push(items)
     list = list.filter(item => item.length > 0)
-    data = undefined
-    console.log(list);
-    if (list[0].length == list_length) {
-      setTimeout(() => {
-        canva.onmousedown = null
-        var gif = new Image(canva.width, canva.height)
-        gif.id = "win-gif"
-        gif.src = "https://media.discordapp.net/attachments/1097848166285586443/1191788262361141438/0980c3f7782348bd.gif"
-        canva.parentNode!.appendChild(gif)
-      }, 100);
-    }
+
+    if_win()
   }
   canva.onmousedown = (e) => {
     var { PosX, PosY } = getPos(e)
@@ -163,11 +154,28 @@ onMounted(() => {
     if (!data) return;
     var { PosX, PosY } = getPos(e)
     for (const item of data) {
-      var { col, row, posX, posY } = item
+      var { posX, posY } = item
       item.left = PosX - posX
       item.top = PosY - posY
-      DrawImage(col, row, PosX - posX, PosY - posY)
+      DrawImage(item.col, item.row, PosX - posX, PosY - posY)
     }
+
+  }
+  function if_win() {
+    if (clear.value = list[0].length == list_length) {
+      setTimeout(() => {
+        canva.onmousedown = null
+        var gif = new Image(canva.width, canva.height)
+        gif.id = "win-gif"
+        gif.src = "https://media.discordapp.net/attachments/1097848166285586443/1191788262361141438/0980c3f7782348bd.gif"
+        canva.parentNode!.appendChild(gif)
+        setTimeout(() => canva.parentNode!.removeChild(gif), 5000)
+      }, 100);
+    }
+  }
+  function genlist(row: number, col: number) {
+    return new Array(row * col).fill({})
+      .map((x, i) => [new ClipData(i, col, row)])
   }
 })
 
@@ -216,15 +224,19 @@ function replice() {
 </script>
 <template>
   <div>
-    <button class="seesee">
-      偷看一下
-      <img class="hover" src="https://www.nemomofan.com/images/birth.png" height="360" style="left: 100px;">
-    </button>
-    <button>
-      <a href="https://www.nemomofan.com/images/birth.png" download="birth.png">download</a>
-    </button>
-  </div>
-  <div>
+    <div class="d-flex justify-content-center">
+      <button class="seesee">
+        偷看一下
+        <img class="hover" src="/images/birth.png" height="360" style="left: 100px;">
+      </button>
+      <button v-if="clear">
+        <a id="download" target="_blank"
+          href="https://drive.google.com/drive/u/2/folders/14S0jtg0K8rFXnB-4rWGTvUL94F33YGuq">下載連結</a>
+      </button>
+      <button @click="replice" v-else>
+        搶救消失拼圖塊
+      </button>
+    </div>
     <canvas id="Puzzle">
       對不起，您的瀏覽器不支持HTML5畫布API。
     </canvas>
@@ -235,6 +247,10 @@ function replice() {
   display: block;
 }
 
+a#download {
+  color: #000000;
+}
+
 .hover {
   position: fixed;
   z-index: 999;
@@ -243,9 +259,10 @@ function replice() {
 }
 
 #win-gif {
-  position: fixed;
-  top: 0px;
-  left: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #Puzzle {
