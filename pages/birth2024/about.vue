@@ -1,14 +1,20 @@
 <script setup lang="ts">
-const lists = ref({
-  總召: [['臘肉', 'ykuilru1']],
-  企劃協作: [['艾路', 'bkb0408'], ['凌晴', 'ymie0204'], ['無面騎士restar', 'restar_rider',]],
-  網站及拼圖製作: [['夏目', '_natsume0304'],],
-  生日祝賀版設計: [['Justin Huang', 'justin19980213'], ['ながと', 'nagato191109'], ['夏目', '_natsume0304']],
-  影片剪輯: [['臘肉', 'ykuilru1'], ['懷特', 'SxWhite3'], ['ながと', 'nagato191109'], ['小亞', 'shinikonotDD'],],
-  歌曲製作: [['RavenClaw', 'RavenCl06474794'], ['斑無', 'MadaraNashi']],
-  混音師: [['Teddy Wang @TAKEOFF MUSIC STUDIO', '']],
-  繪師: [['熱晴', 'PA5510N0423'], ['奶油醬油', 'CSS74134570'],],
-})
+const lists = ref([
+  [{ title: '總召', list: [{ name: '臘肉', id: 'ykuilru1' }] },{ title: '企劃協作', list: [{ name: '艾路', id: 'bkb0408' }, { name: '凌晴', id: 'ymie0204' }, { name: '無面騎士restar', id: 'restar_rider' }] }],
+  [
+    { title: '網站及拼圖製作', list: [{ name: '夏目', id: '_natsume0304' }] },
+    { title: '生日祝賀版設計', list: [{ name: 'Justin Huang', id: 'justin19980213' }, { name: 'ながと', id: 'nagato191109' }] }
+  ],
+  [
+    { title: '影片剪輯', list: [{ name: '臘肉', id: 'ykuilru1' }, { name: '懷特', id: 'SxWhite3' }] },
+    { title: '影片協助', list: [{ name: 'ながと', id: 'nagato191109' }, { name: '小亞', id: 'shinikonotDD' }] }
+  ],
+  [
+    { title: '絆ノ奇跡、星座になれたら製作', list: [{ name: 'RavenClaw', id: 'RavenCl06474794' }, { name: '斑無', id: 'MadaraNashi' }] },
+    { title: '混音師', list: [{ name: 'Teddy Wang @TAKEOFF MUSIC STUDIO', id: '' }] }
+  ],
+  [{ title: '繪師', list: [{ name: '熱晴', id: 'PA5510N0423' }, { name: '奶油醬油', id: 'CSS74134570' }] }]
+])
 </script>
 <template>
   <Title>關於我們 - 涅默Nemesis2024生日企劃</Title>
@@ -33,13 +39,15 @@ const lists = ref({
   <Body id="open">
     <div id="about" class="d-flex justify-content-center">
       <div id="auto-row" class="row-cols-auto">
-        <div id="listRow" v-for="(list, key) in lists">
-          <h2>{{ key }}</h2>
-          <div class="d-flex justify-content-center">
-            <div id="listCol" v-for="data in list">
-              <img :src="`/images/icon/${data[1]}.jpg`" width="180" height="180">
-              <NuxtLink id="name" class="nav-link" :to="'https://twitter.com/' + data[1]" target="_blank"
-                :title="'@' + data[1]">{{ data[0] }}</NuxtLink>
+        <div class="d-flex justify-content-center" v-for="cols in lists">
+          <div id="listRow" v-for="col in cols">
+            <h2 style="padding:0px 10px;">{{ col.title }}</h2>
+            <div class="d-flex justify-content-center">
+              <div id="listCol" v-for="data in col.list">
+                <img :src="`/images/icon/${data.id}.jpg`" width="240" height="240">
+                <NuxtLink id="name" class="nav-link" :to="'https://twitter.com/' + data.id" target="_blank"
+                  :title="'@' + data.id">{{ data.name }}</NuxtLink>
+              </div>
             </div>
           </div>
         </div>
@@ -67,13 +75,13 @@ const lists = ref({
     text-align: center;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+    padding: 3px 5px;
+    margin: 10px;
   }
 
   #listCol {
     border-radius: 20px;
-    margin: 10px;
-    padding: 5px !important;
+    margin: 5px;
     background-color: rgba(255, 255, 255);
 
     img {

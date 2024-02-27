@@ -53,10 +53,10 @@ const list = ref([
 ])
 </script>
 <template>
-  <Title>太陽伴星觀測記錄 - 涅默Nemesis2024生日企劃</Title>
+  <Title>生日祝賀版 - 涅默Nemesis2024生日企劃</Title>
 
-  <Meta content="太陽伴星觀測記錄 - 涅默Nemesis2024生日企劃" property="title" />
-  <Meta content="太陽伴星觀測記錄 - 涅默Nemesis2024生日企劃" property="og:title" />
+  <Meta content="生日祝賀版 - 涅默Nemesis2024生日企劃" property="title" />
+  <Meta content="生日祝賀版 - 涅默Nemesis2024生日企劃" property="og:title" />
 
   <Meta content="這裡記錄著我們所觀測到的她 每一次的觀測都帶給我們不同的心情~" property="description" />
   <Meta content="這裡記錄著我們所觀測到的她 每一次的觀測都帶給我們不同的心情~" property="og:description" />
@@ -74,7 +74,7 @@ const list = ref([
   <Body id="open">
     <div class="row justify-content-center">
       <a class="col-3" target="_blank" v-for="name in list" :href="'/images/message/' + name + '.svg'">
-        <img :src="'/images/message/' + name + '.svg'" alt=""></a>
+        <img :src="'/images/message/' + name + '.svg'"></a>
     </div>
   </Body>
 </template>

@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <Title>涅默Nemesis Birth2nd</Title>
+  <Title>涅默Nemesis 趣味拼圖</Title>
 
   <Meta content="趣味拼圖 - 涅默Nemesis2024生日企劃" property="title" />
   <Meta content="趣味拼圖 - 涅默Nemesis2024生日企劃" property="og:title" />
@@ -29,10 +29,8 @@
 <style lang="scss">
 body#Puzzlebody {
   font-family: 'SetoFont', 'Noto Serif TC', sans-serif;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   -ms-overflow-style: none;
+  background-color: blanchedalmond;
   background-image: none;
   user-select:none; /* standard syntax */
   -webkit-user-select:none; /* for Chrome、Safari */

@@ -4,22 +4,46 @@ useHead({
   script: [{ src: "https://platform.twitter.com/widgets.js", async: true }]
 })
 
+
 onMounted(() => {
   var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, controls: false })
-  player.load('PEtuFuEcKLc', true)
+  var data = [
+    'QQ1o6L_RaV4', 'dglXSGJq_iE',
+    '706rIXOqEyE', 'fncHMihCVNQ',
+    'XPywHJ4hN5w', 'g4m6c9Dkqz4',
+    'n8E3AcSubOQ', 'fdnSBVHfyms',
+    'sonNnxfNGp4', 'OX9wKg3hSCM',
+    'iDgfP_-uKx4', 'CaKBHMQUF48',
+    'PW0jFBllohs', 'T2yBMnb8AXI',
+    'w93Psf-YAcA', 'yDrRTLSUL1Y',
+    'kufamSiawTs', 'cZvpUUe2NSM',
+    'YWIj36Z_FNU', 'JhdWcqhlFuI',
+    'koBPZDLhpTs', 'vBAOLhEWS0M',
+    '8elK5yqRGUU', 'BtBvHmGUgkQ',
+    'EawFVmD59_M'
+  ]
+  selectlist()
+  function selectlist() {
+    player.load(data[Math.floor(Math.random() * data.length)], true)
+  }
+
+  console.log(data);
+  
+
+  player.on('ended', selectlist)
 })
 </script>
 <template>
   <Title>涅默Nemesis週年及活動特設網站</Title>
-
+  <Link href="site.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="涅默Nemesis|XDFP" property="title" />
   <Meta content="涅默Nemesis|XDFP" property="og:title" />
 
   <Meta content="涅默Nemesis週年及活動特設網站" property="og:site_name" />
 
-  <Meta content="一周年公車預慶祝開跑" property="description" />
-  <Meta content="一周年公車預慶祝開跑" property="og:description" />
-  <Meta content="一周年公車預慶祝開跑" name="twitter:description" />
+  <Meta content="涅默Nemesis小檔案" property="description" />
+  <Meta content="涅默Nemesis小檔案" property="og:description" />
+  <Meta content="涅默Nemesis小檔案" name="twitter:description" />
   <Meta content="https://www.nemomofan.com/" property="og:url" />
 
   <div id="out-tab" class="d-flex justify-content-between">

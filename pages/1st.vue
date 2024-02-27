@@ -47,7 +47,6 @@ function handleScroll() {
   <Meta content="涅默Nemesis 一周年紀念倒數" property="title" />
   <Meta content="涅默Nemesis 一周年紀念倒數" property="og:title" />
 
-
   <Meta content=一周年紀念活動 property="description" />
   <Meta content=一周年紀念活動 property="og:description" />
   
@@ -56,11 +55,10 @@ function handleScroll() {
 
   <Meta content="http://www.nemomofan.com/1st" property="og:url" />
 
-  <Body id="open">
+  <Body id="year1">
 
     <tab-bar title="涅默Nemesis 一周年紀念活動" :routes="[
       { path: '/1st', text: '觀測總集' },
-//      { path: '/1st/photo', text: '觀測報告' },
       { path: '/1st/message', text: '觀測感言' },
       { path: '/1st/about', text: '關於我們' }
     ]" />
@@ -96,7 +94,7 @@ body {
   overflow: -moz-scrollbars-none;
 }
 
-#open::-webkit-scrollbar {
+#year1::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
 }
@@ -118,7 +116,7 @@ body {
   }
 }
 
-#open {
+#year1 {
   background-image: url(/images/bg-open.jpg);
 }
 

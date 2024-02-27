@@ -18,20 +18,37 @@ var border: number
 var _border: number
 var list_length: number
 var clear = ref(false)
+var timer: NodeJS.Timer
+var time = ref('0秒')
+
 class ClipData {
+  public readonly value: number
   readonly row: number
   readonly col: number
   top: number
   left: number
   posX: number = 0
   posY: number = 0
-  constructor(public readonly value: number, col: number, row: number) {
-    this.row = Math.floor(value / col)
-    this.col = value % col
-    if (this.row >= row - _border || this.col >= col - _border) this.value = -1
-    else this.value = this.row * col + this.col
-    this.top = (this.row + border) * dsize;
-    this.left = (this.col + border) * dsize;
+  constructor(data: ClipData)
+  constructor(value: number, col: number, row: number)
+  constructor(value: number | ClipData, col: number = 0, row: number = 0) {
+    if (typeof value == 'number') {
+      this.row = Math.floor(value / col)
+      this.col = value % col
+      if (this.row >= row - _border || this.col >= col - _border) this.value = -1
+      else this.value = this.row * col + this.col
+      this.top = (this.row + border) * dsize;
+      this.left = (this.col + border) * dsize;
+    }
+    else {
+      this.value = value.value
+      this.row = value.row
+      this.col = value.col
+      this.top = value.top
+      this.left = value.left
+      this.posX = value.posX
+      this.posY = value.posY
+    }
   }
 }
 function drawRandom() {
@@ -39,7 +56,7 @@ function drawRandom() {
   for (const item of list) {
     for (const data of item) {
       clipRandom(data, range)
-      
+
     }
   }
 }
@@ -108,12 +125,24 @@ onMounted(() => {
       col += _border
       canva.width = col * dsize
       canva.height = row * dsize
+
       list = genlist(row, col).filter(x => x[0].value > -1)
+      
+      if (window.localStorage.getItem('win') != 'true') {
+        var record = window.localStorage.getItem('record')
+        if (!record) {
+          drawRandom()
+          window.localStorage.setItem('record', JSON.stringify(list))
+        } else {
+          var temp = JSON.parse(record) as ClipData[][]
+          list = temp.map(x => x.map(data => new ClipData(data)))
+        }
+      }
       list_length = list.length
-      drawRandom()
       drawImage();
     }
   }
+  if (window.localStorage.getItem('win')) return
   canva.onmouseup = (e) => {
     if (!data) return;
     var items = data
@@ -136,10 +165,24 @@ onMounted(() => {
     data = undefined
     list.push(items)
     list = list.filter(item => item.length > 0)
-
+    console.log(list);
     if_win()
   }
+  var cnt = Number(window.localStorage.getItem('count') || 0)
+  time.value = cnt + '秒'
+  canva.addEventListener('mousedown', canvaTimer)
+  function canvaTimer(e: MouseEvent) {
+    if (e.which != 1) return
+    timer = setInterval(() => {
+      cnt++
+      window.localStorage.setItem('count', `${cnt}`)
+      time.value = cnt + '秒'
+    }, 1000)
+    canva.removeEventListener('mousedown', canvaTimer)
+  }
+
   canva.onmousedown = (e) => {
+    if (e.which != 1) return
     var { PosX, PosY } = getPos(e)
     data = list.filter(item => item.some(x => (PosX >= x.left && PosX < x.left + dsize) && (PosY >= x.top && PosY < x.top + dsize))).pop()
     if (!data) return
@@ -148,10 +191,10 @@ onMounted(() => {
       item.posX = PosX - item.left
       item.posY = PosY - item.top
     }
-  };
+  }
   canva.onmousemove = (e) => {
     drawImage()
-    if (!data) return;
+    if (!data || e.which != 1) return;
     var { PosX, PosY } = getPos(e)
     for (const item of data) {
       var { posX, posY } = item
@@ -159,12 +202,17 @@ onMounted(() => {
       item.top = PosY - posY
       DrawImage(item.col, item.row, PosX - posX, PosY - posY)
     }
-
   }
   function if_win() {
+    replice()
     if (clear.value = list[0].length == list_length) {
+      window.localStorage.setItem('win', 'true')
+      clearInterval(timer)
       setTimeout(() => {
         canva.onmousedown = null
+        canva.onmousemove = null
+        canva.onmouseup = null
+
         var gif = new Image(canva.width, canva.height)
         gif.id = "win-gif"
         gif.src = "https://media.discordapp.net/attachments/1097848166285586443/1191788262361141438/0980c3f7782348bd.gif"
@@ -219,12 +267,14 @@ function replice() {
       DrawImage(data.col, data.row, data.left, data.top)
       list.push([data])
     }
+  window.localStorage.setItem('record', JSON.stringify(list))
 }
 
 </script>
 <template>
   <div>
     <div class="d-flex justify-content-center">
+      <div id="time"> {{ time }}</div>
       <button class="seesee">
         偷看一下
         <img class="hover" src="/images/birth.png" height="360" style="left: 100px;">

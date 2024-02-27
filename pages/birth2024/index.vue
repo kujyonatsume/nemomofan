@@ -16,22 +16,21 @@
     property="twitter:image" />
 
   <Meta content="https://www.nemomofan.com/1st" property="og:url" />
-  <Body id="open">
-  <!--
-      <div class="d-flex justify-content-center">
-    <iframe id="video" src="https://www.youtube.com/embed/26VnnZwjHIY?si=_jgJwzdGwaecbBUw&autoplay=1"
-      title="YouTube video player" frameborder="2"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
-  </div>
-  -->
-</Body>
+
+  <Body id="open" :style="'backdrop-filter:blur(20px)'">
+    <div class="d-flex justify-content-center">
+      <iframe id="video" src="https://www.youtube.com/embed/LQInvdiB4vA?si=JPHH1nR4B2LOG9Pp"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+  </Body>
 </template>
 <style lang="scss">
+
 $h: calc(100vh - 95px);
 
 #video {
   height: $h;
   width: calc($h / 9 * 16);
-}
-</style>
+}</style>

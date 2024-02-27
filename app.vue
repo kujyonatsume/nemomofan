@@ -1,5 +1,4 @@
 <template>
-  <Link href="site.ico" rel="shortcut icon" type="image/x-icon" />
   
   <Meta content="text/html; charset=UTF-8" http-equiv="content-type" />
   <Meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" name="viewport" />

@@ -4,7 +4,7 @@ const dateline = ref(false)
 const datestr = ref('')
 onBeforeMount(() => {
   window.addEventListener('scroll', handleScroll)
-  var first_time = Date.parse('2024/2/12 20:00:00') - Date.now()
+  var first_time = Date.parse('2024/2/12 00:00:00') - Date.now()
   var timerfn = getdate
   if (first_time <= 60000) {
     timerfn = cnt60
@@ -30,17 +30,22 @@ onBeforeMount(() => {
   }
   
   function getdate() {
-    var date = Date.parse('2024/2/12 20:00:00') - Date.now()
+    var date = Date.parse('2024/2/12 00:00:00') - Date.now()
     dateline.value = date < 1 || document.documentURI.includes("?true")
     if (dateline.value) {
       interval.clear()
     } else {
       date = date / 1000
+      var str = ''
       var days = Math.floor(date / 86400);
+      if(days > 0) str += `${days} 天`
       var hours = Math.floor((date % (86400)) / 3600);
+      if(hours > 0) str += `${hours} 小時`
       var minutes = Math.floor((date % 3600) / 60);
+      if(minutes > 0) str += `${minutes} 分`
       var seconds = Math.floor(date % (60));
-      datestr.value = `${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`
+      str += `${seconds} 秒`
+      datestr.value = str
       
     }
   }
@@ -64,8 +69,8 @@ function handleScroll() {
   <Link href="site.ico" rel="shortcut icon" type="image/x-icon" />
   <Meta content="涅默Nemesis 2024生日企劃" property="og:site_name" />
 
-  <Meta content="涅默Nemesis 一周年紀念倒數" property="title" />
-  <Meta content="涅默Nemesis 一周年紀念倒數" property="og:title" />
+  <Meta content="涅默Nemesis 2024生日倒數" property="title" />
+  <Meta content="涅默Nemesis 2024生日倒數" property="og:title" />
 
   <Meta content=2024生日企劃 property="description" />
   <Meta content=2024生日企劃 property="og:description" />
