@@ -16,6 +16,7 @@ const lists = ref([
   [{ title: '繪師', list: [{ name: '熱晴', id: 'PA5510N0423' }, { name: '奶油醬油', id: 'CSS74134570' }] }]
 ])
 </script>
+
 <template>
   <Title>關於我們 - 涅默Nemesis2024生日企劃</Title>
 
@@ -55,6 +56,7 @@ const lists = ref([
     </div>
   </Body>
 </template>
+
 <style lang="scss">
 #about {
   color: #ff5177;

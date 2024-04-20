@@ -4,33 +4,41 @@ useHead({
   script: [{ src: "https://platform.twitter.com/widgets.js", async: true }]
 })
 
+const data = ref([
+  'QQ1o6L_RaV4', 'dglXSGJq_iE',
+  '706rIXOqEyE', 'fncHMihCVNQ',
+  'XPywHJ4hN5w', 'g4m6c9Dkqz4',
+  'n8E3AcSubOQ', 'fdnSBVHfyms',
+  'sonNnxfNGp4', 'OX9wKg3hSCM',
+  'iDgfP_-uKx4', 'CaKBHMQUF48',
+  'PW0jFBllohs', 'T2yBMnb8AXI',
+  'w93Psf-YAcA', 'yDrRTLSUL1Y',
+  'kufamSiawTs', 'cZvpUUe2NSM',
+  'YWIj36Z_FNU', 'JhdWcqhlFuI',
+  'koBPZDLhpTs', 'vBAOLhEWS0M',
+  '8elK5yqRGUU', 'BtBvHmGUgkQ',
+  'EawFVmD59_M'
+])
+
+const barStyle = ref({width: '0px'})
 
 onMounted(() => {
-  var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, controls: false })
-  var data = [
-    'QQ1o6L_RaV4', 'dglXSGJq_iE',
-    '706rIXOqEyE', 'fncHMihCVNQ',
-    'XPywHJ4hN5w', 'g4m6c9Dkqz4',
-    'n8E3AcSubOQ', 'fdnSBVHfyms',
-    'sonNnxfNGp4', 'OX9wKg3hSCM',
-    'iDgfP_-uKx4', 'CaKBHMQUF48',
-    'PW0jFBllohs', 'T2yBMnb8AXI',
-    'w93Psf-YAcA', 'yDrRTLSUL1Y',
-    'kufamSiawTs', 'cZvpUUe2NSM',
-    'YWIj36Z_FNU', 'JhdWcqhlFuI',
-    'koBPZDLhpTs', 'vBAOLhEWS0M',
-    '8elK5yqRGUU', 'BtBvHmGUgkQ',
-    'EawFVmD59_M'
-  ]
-  selectlist()
-  function selectlist() {
-    player.load(data[Math.floor(Math.random() * data.length)], true)
-  }
+  var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, related: false, controls: false })
 
-  console.log(data);
+  var bar = document.getElementById('music-progress-bar')!
+
   
 
+  selectlist()
+  function selectlist() {
+    player.load(data.value[Math.floor(Math.random() * data.value.length)], true)
+    bar.setAttribute('aria-valuemax',`${player.getDuration()}`)
+  }
+  
+  console.log(data.value);
+
   player.on('ended', selectlist)
+  player.on('timeupdate', sec => barStyle.value.width = `${sec / player.getDuration() * 100}%`)
 })
 </script>
 <template>
@@ -133,8 +141,16 @@ onMounted(() => {
     <div class="d-flex justify-content-center">
       <div id="broad">
         <div class="d-flex justify-content-center">
-          <div id="YouTubePlayer" width="1200" height="675">
+          <div>
+            <div id="YouTubePlayer" width="1200" height="675">
 
+            </div>
+            <div class="progress" style="height: 10px;">
+              <div id="music-progress-bar" class="progress-bar bg-danger" role="progressbar" :style="barStyle"></div>
+            </div>
+          </div>
+          <div>
+            <p v-for="id in data">{{ id }}</p>
           </div>
         </div>
       </div>
