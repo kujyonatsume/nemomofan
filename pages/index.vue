@@ -20,25 +20,25 @@ const data = ref([
   'EawFVmD59_M'
 ])
 
-const barStyle = ref({width: '0px'})
+const barStyle = ref({ width: '0px' })
 
 onMounted(() => {
-  var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, related: false, controls: false })
-
-  var bar = document.getElementById('music-progress-bar')!
-
-  
-
-  selectlist()
-  function selectlist() {
-    player.load(data.value[Math.floor(Math.random() * data.value.length)], true)
-    bar.setAttribute('aria-valuemax',`${player.getDuration()}`)
-  }
-  
-  console.log(data.value);
-
-  player.on('ended', selectlist)
-  player.on('timeupdate', sec => barStyle.value.width = `${sec / player.getDuration() * 100}%`)
+  //  var player = new YouTubePlayer('#YouTubePlayer', { width: 1200, height: 675, related: false, controls: false })
+  //
+  //  var bar = document.getElementById('music-progress-bar')!
+  //
+  //  
+  //
+  //  selectlist()
+  //  function selectlist() {
+  //    player.load(data.value[Math.floor(Math.random() * data.value.length)], true)
+  //    bar.setAttribute('aria-valuemax',`${player.getDuration()}`)
+  //  }
+  //  
+  //  console.log(data.value);
+  //
+  //  player.on('ended', selectlist)
+  //  player.on('timeupdate', sec => barStyle.value.width = `${sec / player.getDuration() * 100}%`)
 })
 </script>
 <template>
@@ -137,6 +137,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <!--
 
     <div class="d-flex justify-content-center">
       <div id="broad">
@@ -155,6 +156,8 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    
+    -->
   </div>
   <!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>-->
 </template>
