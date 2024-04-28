@@ -1,5 +1,3 @@
-process.env.port = process.env.NODE_ENV == 'development' ? '1032' : '1031'
-
 export default defineNuxtConfig({
   ssr: false,
   routeRules: {
